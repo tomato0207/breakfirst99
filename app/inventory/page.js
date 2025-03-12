@@ -15,25 +15,25 @@ import {
 
 const orders = [
     {
-        id:"Ord-001",
-        status:"準備中",
-        total:50,
-        table:"1號桌",
+        id:1,
+        name:"培根",
+        stock:20,
+        minStock:15,
     },
     {
-        id:"Ord-002",
-        status:"完成",
-        total:250,
-        table:"5號桌",
+        id:2,
+        name:"雞蛋",
+        stock:20,
+        minStock:15,
     },
     {
-        id:"Ord-003",
-        status:"備餐中",
-        total:150,
-        table:"外帶",
+        id:3,
+        name:"吐司",
+        stock:20,
+        minStock:15,
     },
 ];
-export default function ordersPage(){
+export default function Inventory(){
     return(
         <div className="p-8">
             <div className="flexx justify-between items-center mb-6">
@@ -46,22 +46,19 @@ export default function ordersPage(){
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>訂單編號</TableHead>
-                            <TableHead>狀態</TableHead>
-                            <TableHead>金額</TableHead>
-                            <TableHead>桌號/類型</TableHead>
+                            
+                            <TableHead>商品名稱</TableHead>
+                            <TableHead>當前庫存</TableHead>
+                            <TableHead>最低庫存</TableHead>
                             <TableHead>操作</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {orders.map((order)=>(
                             <TableRow key={order.id}>
-                            <TableCell>{order.id}</TableCell>
-                            <TableCell>
-                                <Badge className={order.status=="準備中"?"bg-red-700":order.status=="備餐中"?"bg-yellow-400":"bg-green-700"}>{order.status}</Badge>
-                            </TableCell>
-                            <TableCell>{order.total}</TableCell>
-                            <TableCell>{order.table}</TableCell>
+                            <TableCell>{order.name}</TableCell>
+                            <TableCell>{order.stock}</TableCell>
+                            <TableCell>{order.minStock}</TableCell>
                             <TableCell>
                                 <Button className="mr-2 bg-red-700 text-white">詳情</Button>
                                 <Button>取消</Button>
