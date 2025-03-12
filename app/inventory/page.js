@@ -23,8 +23,8 @@ const orders = [
     {
         id:2,
         name:"雞蛋",
-        stock:20,
-        minStock:15,
+        stock:8,
+        minStock:10,
     },
     {
         id:3,
@@ -57,7 +57,9 @@ export default function Inventory(){
                         {orders.map((order)=>(
                             <TableRow key={order.id}>
                             <TableCell>{order.name}</TableCell>
-                            <TableCell>{order.stock}</TableCell>
+                            <TableCell className={order.stock < order.minStock ? "text-red-700" : "text-black"}>{order.stock} 
+                                {order.stock<order.minStock?" (庫存不足)":" "}
+                            </TableCell>
                             <TableCell>{order.minStock}</TableCell>
                             <TableCell>
                                 <Button className="mr-2 bg-red-700 text-white">詳情</Button>
