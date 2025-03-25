@@ -41,7 +41,7 @@ export default function PostPage({ params }) {
                                 {post.title}
                             </Link>
                         </h2>
-                        <p className="text-gray-600">{post.content.slice(0, 150)}...</p> {/* 簡短顯示文章內容 */}
+                        <p className="text-gray-600">{post.content}</p> 
                     </div>
                 ))}
             </div>
