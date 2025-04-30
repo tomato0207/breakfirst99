@@ -1,0 +1,49 @@
+@post=3000
+@host = http://localhost:{{post}}
+GET {{host}}/api/todo
+content-type: application/json
+
+###
+GET {{host}}/api/todo?fliter=aa
+content-type: application/json
+
+###
+
+POST {{host}}/api/todo
+content-type: application/json
+
+{
+    "title":"abcd hi"
+}
+
+###
+
+GET {{host}}/api/todo/23
+
+###
+
+DELETE {{host}}/api/todo/23
+
+###
+
+PATCH  {{host}}/api/todo/23
+
+{
+    "title":"aaa 333"
+}
+
+###
+
+PATCH  {{host}}/api/todo/23
+
+{
+    "isDone": true
+}
+
+###
+PATCH {{host}}/api/todo/19
+
+{
+    "isDone":false
+    "title":"bbb 333"
+}
