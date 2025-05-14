@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+
 export async function GET(request){
     let todos = await prisma.todo.findMany({orderBy:[{id:"asc"}]});
     let queryStr = request.nextUrl.searchParams.get("filter");
@@ -18,16 +19,18 @@ export async function GET(request){
     return NextResponse.json(todos);
 }
 
-export async function POST(request){
-    const {title} = await request.json();
-    try{
-        const todo= await prisma.todo.create({
-            data:{title},
+export async function POST(request) {
+    const { title } = await request.json();
+    try {
+        const todo = await prisma.todo.create({
+            data: { title },
         });
         return NextResponse.json(todo);
-    }catch(error){
-        return NextResponse.json(new Error("Error creating todo"),{
-            status:500,
-        });
+    } catch (error) {
+        console.error("建立 todo 發生錯誤：", error);
+        return NextResponse.json(
+            { error: "Error creating todo" },
+            { status: 500 }
+        );
     }
 }
